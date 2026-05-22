@@ -1,0 +1,43 @@
+appy. Py
+import streamlit as st
+
+st.set_page_config(
+    page_title="PM17Ai Suite v1.1",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+st.title("PM17Ai Suite v1.1")
+st.subheader("Sovereign Architectural And Structural Prompt Automation Platform")
+st.sidebar.title("Security Access Gate")
+access_token = st.sidebar.text_input("Enter License Key:", type="password")
+SOVEREIGN_KEY = "PM17Ai-Sovereign-2026"
+if access_token != SOVEREIGN_KEY:
+    st.sidebar.warning("Access token required to activate structural matrices")
+    st.info("Welcome to PM17Ai Suite. This platform is dedicated to structural engineers and rendering professionals to generate zero-error architectural prompts. Please purchase your license key via Gumroad to unlock the dynamic core engine.")
+else:
+    st.sidebar.success("Verification successful. Engine matrices fully armed.")
+    st.sidebar.title("Matrix Parameters")
+    structural_options = {
+        "SYS-01: Carbon Concrete Shells (UHPC)": "carbon-fiber reinforced concrete shell structures, ultra-high performance concrete (UHPC) parametric fluid grids, high tensile structural optimization",
+        "SYS-02: Post-Tensioned Radial Beams": "post-tensioned concrete radial beams, seismically isolated space steel trusses, zero-deflection structural integrity",
+        "SYS-03: Cyclopean Massive Stabilization": "massive Cyclopean concrete stabilization, structural stone integration, rammed earth, heavy cross-laminated timber (CLT) load-bearing frames"
+    }
+    sys_selection = st.sidebar.selectbox("1. Structural System And Materials:", list(structural_options.keys()))
+    environmental_options = {
+        "ENV-01: Arid Mountainous (Taiz Geographics)": "rugged mountainous topography, precise vertical stone terrace integration, sharp subtropical zenith sun, harsh photorealistic architectural shadows, hyper-authentic localized geographic depth",
+        "ENV-02: Urban Coastal High Salinity": "urban coastal environment, highly saline atmospheric humidity, volumetric diffused golden hour sunlight, hyper-detailed horizon reflections, atmospheric scattering"
+    }
+    env_selection = st.sidebar.selectbox("2. Environmental Physics And Geographics:", list(environmental_options.keys()))
+    render_options = {
+        "Midjourney v6 (Landscape 16:9)": "--ar 16:9 --style raw --stylize 300",
+        "Midjourney v6 (Vertical 9:16)": "--ar 9:16 --style raw --stylize 300",
+        "Stable Diffusion 3 Ultra": "8k resolution, architectural photography style, shot on 35mm lens, photorealistic render, architectural digest feature"
+    }
+    render_selection = st.sidebar.selectbox("3. Render Engine Parameters:", list(render_options.keys()))
+    st.markdown("### Executive Sovereign Output (The Zero-Error Prompt)")
+    sys_core = structural_options[sys_selection]
+    env_core = environmental_options[env_selection]
+    rnd_core = render_options[render_selection]
+    final_prompt = f"Professional architectural photography, masterpiece design showcasing {sys_core}, perfectly embedded into {env_core}, capturing realistic structural health integrity and materials textures, {rnd_core}"
+    st.text_area("Copy Verified Prompt:", value=final_prompt, height=150)
+    st.markdown("1. Copy the text from the area above. 2. Inject it directly into your target rendering model for zero-error structural outputs.")
